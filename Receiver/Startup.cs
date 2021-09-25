@@ -3,10 +3,9 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using Broker.Services.Interfaces;
+using Broker.Services;
+using Receiver.Services;
 
 namespace Receiver
 {
@@ -31,7 +30,7 @@ namespace Receiver
 
             app.UseEndpoints(endpoints =>
             {
-               // endpoints.MapGrpcService<GreeterService>();
+               endpoints.MapGrpcService<NotificationService>();
 
                 endpoints.MapGet("/", async context =>
                 {
